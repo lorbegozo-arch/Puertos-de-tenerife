@@ -1,0 +1,1988 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa de Salud Preventiva | Fisify × Puertos de Tenerife</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --turquesa: #00A8B5;
+            --turquesa-light: #00C9D8;
+            --turquesa-pale: #E6F9FA;
+            --azul-oscuro: #0A2540;
+            --azul-medio: #1B4965;
+            --verde-claro: #7DD3C0;
+            --verde-pale: #E8F8F5;
+            --blanco: #FFFFFF;
+            --gris-claro: #F7F9FC;
+            --gris-texto: #5E6E82;
+            --gradient-turquesa: linear-gradient(135deg, #00A8B5 0%, #00C9D8 50%, #7DD3C0 100%);
+            --gradient-azul: linear-gradient(135deg, #0A2540 0%, #1B4965 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--azul-oscuro);
+            line-height: 1.6;
+            background: var(--blanco);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: #FFFFFF;
+            border-bottom: 1px solid rgba(0, 168, 181, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logos {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .logos-image {
+            height: 50px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--gris-texto);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--turquesa);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--turquesa);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gris-claro);
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse at center, rgba(0, 168, 181, 0.08) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--turquesa-pale);
+            color: var(--turquesa);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--azul-oscuro);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .highlight {
+            background: var(--gradient-turquesa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--gris-texto);
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-turquesa);
+            color: var(--blanco);
+            box-shadow: 0 4px 20px rgba(0, 168, 181, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 168, 181, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--blanco);
+            color: var(--azul-oscuro);
+            border: 2px solid rgba(0, 168, 181, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--turquesa);
+            color: var(--turquesa);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image-container {
+            position: relative;
+            border-radius: 24px;
+            overflow: visible;
+            box-shadow: 0 40px 80px rgba(10, 37, 64, 0.15);
+            margin-bottom: 60px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            background: var(--gradient-azul);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .hero-illustration {
+            width: 80%;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .illustration-ring {
+            width: 200px;
+            height: 200px;
+            border: 3px solid rgba(0, 200, 216, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: rotate 20s linear infinite;
+            position: relative;
+        }
+
+        .illustration-ring::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--turquesa-light);
+            border-radius: 50%;
+            top: -10px;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .illustration-center {
+            width: 120px;
+            height: 120px;
+            background: var(--turquesa);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 60px rgba(0, 168, 181, 0.5);
+        }
+
+        .illustration-center svg {
+            width: 60px;
+            height: 60px;
+            fill: var(--blanco);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--turquesa-light);
+        }
+
+        .floating-cards-bottom {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1.5rem;
+            z-index: 10;
+        }
+
+        .floating-card {
+            background: var(--blanco);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 10px 40px rgba(10, 37, 64, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .floating-card-1 {
+            animation-delay: 0s;
+        }
+
+        .floating-card-2 {
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-icon.turquesa { background: var(--turquesa-pale); }
+        .floating-icon.verde { background: var(--verde-pale); }
+
+        .floating-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .floating-text {
+            font-weight: 600;
+            color: var(--azul-oscuro);
+        }
+
+        .floating-subtext {
+            font-size: 0.85rem;
+            color: var(--gris-texto);
+        }
+
+        /* Sección de Contexto */
+        .context {
+            padding: 6rem 2rem;
+            background: var(--blanco);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--turquesa-pale);
+            color: var(--turquesa);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--azul-oscuro);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gris-texto);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .context-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .context-grid .context-card:last-child {
+            grid-column: span 2;
+            max-width: 50%;
+            margin: 0 auto;
+        }
+
+        .context-card {
+            background: var(--gris-claro);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .context-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-turquesa);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .context-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(10, 37, 64, 0.1);
+        }
+
+        .context-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .context-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: var(--turquesa-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .context-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--turquesa);
+        }
+
+        .context-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--azul-oscuro);
+        }
+
+        .context-card p {
+            color: var(--gris-texto);
+            font-size: 0.95rem;
+        }
+
+        /* Sección Problema */
+        .problem {
+            padding: 6rem 2rem;
+            background: var(--gradient-azul);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .problem .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .problem .section-tag {
+            background: rgba(0, 200, 216, 0.2);
+            color: var(--turquesa-light);
+        }
+
+        .problem .section-title {
+            color: var(--blanco);
+        }
+
+        .problem .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .problem-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .problem-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .problem-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .problem-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        .problem-number {
+            width: 36px;
+            height: 36px;
+            background: var(--turquesa);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--blanco);
+            flex-shrink: 0;
+        }
+
+        .problem-item h4 {
+            color: var(--blanco);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .problem-item p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .problem-highlight {
+            background: rgba(0, 168, 181, 0.1);
+            border: 2px solid var(--turquesa);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .problem-highlight-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--turquesa);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .problem-highlight-icon svg {
+            width: 40px;
+            height: 40px;
+            color: var(--blanco);
+        }
+
+        .problem-highlight h3 {
+            color: var(--blanco);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-highlight p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        /* Sección Solución - Pilares */
+        .pillars {
+            padding: 6rem 2rem;
+            background: var(--gris-claro);
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pillar-card {
+            background: var(--blanco);
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-turquesa);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pillar-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .pillar-number {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: rgba(0, 168, 181, 0.1);
+            line-height: 1;
+        }
+
+        .pillar-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: var(--gradient-turquesa);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pillar-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--blanco);
+        }
+
+        .pillar-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--azul-oscuro);
+            position: relative;
+            z-index: 1;
+        }
+
+        .pillar-card p {
+            color: var(--gris-texto);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pillar-features {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pillar-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            color: var(--gris-texto);
+            font-size: 0.95rem;
+        }
+
+        .pillar-features li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--turquesa);
+            flex-shrink: 0;
+        }
+
+        /* Sección App */
+        .app-section {
+            padding: 6rem 2rem;
+            background: var(--blanco);
+            overflow: hidden;
+        }
+
+        .app-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .app-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .app-feature {
+            display: flex;
+            gap: 1.25rem;
+            padding: 1.5rem;
+            background: var(--gris-claro);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .app-feature:hover {
+            background: var(--turquesa-pale);
+        }
+
+        .app-feature-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--turquesa);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .app-feature-icon svg {
+            width: 26px;
+            height: 26px;
+            color: var(--blanco);
+        }
+
+        .app-feature h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--azul-oscuro);
+        }
+
+        .app-feature p {
+            color: var(--gris-texto);
+            font-size: 0.95rem;
+        }
+
+        .app-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app-mockup-image {
+            max-width: 320px;
+            height: auto;
+            border-radius: 32px;
+            box-shadow: 0 40px 80px rgba(10, 37, 64, 0.25);
+        }
+
+        /* Sección Modelo */
+        .model {
+            padding: 6rem 2rem;
+            background: var(--gris-claro);
+        }
+
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .model-card {
+            background: var(--blanco);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .model-card:hover {
+            border-color: var(--turquesa);
+        }
+
+        .model-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: var(--turquesa-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .model-card-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--turquesa);
+        }
+
+        .model-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: var(--azul-oscuro);
+        }
+
+        .model-card p {
+            color: var(--gris-texto);
+            font-size: 0.95rem;
+        }
+
+        /* Sección Precios */
+        .pricing {
+            padding: 6rem 2rem;
+            background: var(--blanco);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-card {
+            background: var(--gris-claro);
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            background: var(--gradient-turquesa);
+            color: var(--blanco);
+        }
+
+        .pricing-card.featured::before {
+            content: 'RECOMENDADO';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--azul-oscuro);
+            color: var(--blanco);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .pricing-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: var(--turquesa-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card.featured .pricing-icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .pricing-icon svg {
+            width: 30px;
+            height: 30px;
+            color: var(--turquesa);
+        }
+
+        .pricing-card.featured .pricing-icon svg {
+            color: var(--blanco);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--azul-oscuro);
+        }
+
+        .pricing-card.featured h3 {
+            color: var(--blanco);
+        }
+
+        .pricing-card .price {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 1rem 0;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .pricing-card p {
+            color: var(--gris-texto);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card.featured p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 0;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--turquesa);
+            flex-shrink: 0;
+        }
+
+        .pricing-card.featured .pricing-features li svg {
+            color: var(--blanco);
+        }
+
+        .pricing-note {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--turquesa-pale);
+            border-radius: 16px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-note p {
+            color: var(--azul-oscuro);
+            font-size: 0.95rem;
+        }
+
+        .pricing-note strong {
+            color: var(--turquesa);
+        }
+
+        /* Sección Impacto */
+        .impact {
+            padding: 6rem 2rem;
+            background: var(--gris-claro);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .impact-card {
+            background: var(--blanco);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(10, 37, 64, 0.1);
+        }
+
+        .impact-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--turquesa-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .impact-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--turquesa);
+        }
+
+        .impact-card h4 {
+            font-size: 1.1rem;
+            color: var(--azul-oscuro);
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-card p {
+            color: var(--gris-texto);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Final */
+        .cta-final {
+            padding: 6rem 2rem;
+            background: var(--gradient-azul);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-final::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 168, 181, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-final::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(125, 211, 192, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--blanco);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content > p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.25rem 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--turquesa);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--blanco);
+        }
+
+        .contact-text {
+            text-align: left;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-value {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--blanco);
+        }
+
+        .contact-value a {
+            color: var(--blanco);
+            text-decoration: none;
+        }
+
+        .contact-value a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--azul-oscuro);
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logos {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-logos-image {
+            height: 40px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .footer-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(125, 211, 192, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            color: var(--verde-claro);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .footer-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .floating-cards-bottom {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                transform: none;
+                justify-content: center;
+                margin-top: 1.5rem;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-content {
+                grid-template-columns: 1fr;
+            }
+
+            .app-content {
+                grid-template-columns: 1fr;
+            }
+
+            .app-visual {
+                order: -1;
+            }
+
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .context-grid .context-card:last-child {
+                grid-column: span 2;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                padding: 0.75rem 1rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .logos-image {
+                height: 40px;
+            }
+
+            .model-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .context-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .context-grid .context-card:last-child {
+                grid-column: span 1;
+            }
+
+            .floating-cards-bottom {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <div class="logos">
+                <img src="logos.png" alt="Puertos de Tenerife × Fisify" class="logos-image">
+            </div>
+            <nav>
+                <a href="#contexto">Contexto</a>
+                <a href="#solucion">Solución</a>
+                <a href="#tecnologia">Tecnología</a>
+                <a href="#modelo">Modelo</a>
+                <a href="#precios">Inversión</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Organización Certificada Saludable
+                </div>
+                <h1>Programa Integral de <span class="highlight">Salud Preventiva</span></h1>
+                <p class="hero-description">
+                    Una solución continua y personalizada para el bienestar físico de los trabajadores de Puertos de Tenerife. Prevención, seguimiento y tecnología al servicio de tu equipo.
+                </p>
+                <div class="hero-cta">
+                    <a href="#modelo" class="btn btn-primary">
+                        <span>Ver Propuesta Completa</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#precios" class="btn btn-secondary">
+                        Orientación de Inversión
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-container">
+                    <div class="hero-image">
+                        <div class="hero-illustration">
+                            <div class="illustration-ring">
+                                <div class="illustration-center">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="hero-stats">
+                                <div class="hero-stat">
+                                    <div class="hero-stat-value">100%</div>
+                                    <div>Personalizado</div>
+                                </div>
+                                <div class="hero-stat">
+                                    <div class="hero-stat-value">24/7</div>
+                                    <div>Acceso App</div>
+                                </div>
+                                <div class="hero-stat">
+                                    <div class="hero-stat-value">IA</div>
+                                    <div>Corrección</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floating-cards-bottom">
+                        <div class="floating-card floating-card-1">
+                            <div class="floating-icon turquesa">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#00A8B5" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                                    <circle cx="8.5" cy="7" r="4"/>
+                                    <path d="M20 8v6M23 11h-6"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="floating-text">Seguimiento Personal</div>
+                                <div class="floating-subtext">Fisioterapeuta asignado</div>
+                            </div>
+                        </div>
+                        <div class="floating-card floating-card-2">
+                            <div class="floating-icon verde">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#7DD3C0" stroke-width="2">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="floating-text">IA Preventiva</div>
+                                <div class="floating-subtext">Corrección en tiempo real</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contexto Section -->
+    <section id="contexto" class="context">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Contexto</span>
+                <h2 class="section-title">Necesidades Identificadas</h2>
+                <p class="section-subtitle">Entendemos los desafíos específicos de Puertos de Tenerife para diseñar una solución a medida</p>
+            </div>
+            <div class="context-grid">
+                <div class="context-card">
+                    <div class="context-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Plantilla Diversa</h3>
+                    <p>Trabajadores distribuidos entre varios puertos e islas, con una edad media alta que requiere atención especial.</p>
+                </div>
+                <div class="context-card">
+                    <div class="context-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Dolencias Comunes</h3>
+                    <p>Lumbalgias, cervicales, túnel carpiano y malas posturas afectan tanto a personal de oficina como a policía portuaria.</p>
+                </div>
+                <div class="context-card">
+                    <div class="context-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3>Dispersión Geográfica</h3>
+                    <p>La necesidad de llegar a todos los trabajadores impulsa la demanda de formatos online flexibles y accesibles desde cualquier ubicación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problema Section -->
+    <section class="problem">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">El Reto</span>
+                <h2 class="section-title">El Problema de las Acciones Aisladas</h2>
+                <p class="section-subtitle">La clave no está en hacer más, sino en crear continuidad y seguimiento real</p>
+            </div>
+            <div class="problem-content">
+                <div class="problem-list">
+                    <div class="problem-item">
+                        <div class="problem-number">1</div>
+                        <div>
+                            <h4>Acciones puntuales sin continuidad</h4>
+                            <p>Talleres y formaciones que no generan cambios de hábitos a largo plazo.</p>
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-number">2</div>
+                        <div>
+                            <h4>Falta de seguimiento personalizado</h4>
+                            <p>Sin acompañamiento, los empleados no mantienen las rutinas aprendidas.</p>
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-number">3</div>
+                        <div>
+                            <h4>Difícil acceso para todos</h4>
+                            <p>Las actividades presenciales solo llegan a una parte de la plantilla.</p>
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-number">4</div>
+                        <div>
+                            <h4>Impacto difícil de medir</h4>
+                            <p>Sin métricas claras, es complicado justificar la inversión continuada.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="problem-highlight">
+                    <div class="problem-highlight-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                    </div>
+                    <h3>La Diferencia Fisify</h3>
+                    <p>Un programa integral y continuo que combina intervenciones presenciales con seguimiento digital personalizado, creando una verdadera cultura preventiva.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pilares Section -->
+    <section id="solucion" class="pillars">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nuestra Solución</span>
+                <h2 class="section-title">Los 3 Pilares del Servicio</h2>
+                <p class="section-subtitle">Un enfoque completo que abarca análisis, acción y seguimiento continuo</p>
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <span class="pillar-number">01</span>
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Análisis Previo</h3>
+                    <p>Estudiamos a fondo el perfil de vuestra plantilla para diseñar intervenciones específicas.</p>
+                    <ul class="pillar-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Perfil demográfico (edad, género, tareas)
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Análisis de dolencias y bajas
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Distribución geográfica
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Evaluación de recursos existentes
+                        </li>
+                    </ul>
+                </div>
+                <div class="pillar-card">
+                    <span class="pillar-number">02</span>
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Acciones Presenciales</h3>
+                    <p>Intervenciones directas que crean impacto inmediato y conexión personal.</p>
+                    <ul class="pillar-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Talleres: espalda sana, fuerza, movilidad
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Valoraciones funcionales individuales
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Fisioterapia presencial (chequeos + asesoramiento)
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Formaciones ergonómicas en puesto
+                        </li>
+                    </ul>
+                </div>
+                <div class="pillar-card">
+                    <span class="pillar-number">03</span>
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3>Seguimiento Continuo</h3>
+                    <p>La clave del impacto real: acompañamiento personalizado que garantiza resultados.</p>
+                    <ul class="pillar-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Llamadas semanales de seguimiento
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Chat directo con fisioterapeuta
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Ejercicios personalizados adaptados
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Videoconsultas para islas remotas
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Section -->
+    <section id="tecnologia" class="app-section">
+        <div class="container">
+            <div class="app-content">
+                <div class="app-text">
+                    <span class="section-tag">Tecnología</span>
+                    <h2 class="section-title">App Personalizada con IA</h2>
+                    <p class="section-subtitle" style="text-align: left; margin-left: 0;">Tecnología avanzada que multiplica el impacto del programa, accesible para todos los trabajadores desde cualquier ubicación.</p>
+                    <div class="app-features">
+                        <div class="app-feature">
+                            <div class="app-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+                                    <circle cx="12" cy="13" r="4"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Corrección por Cámara en Tiempo Real</h4>
+                                <p>La IA analiza los movimientos y corrige la postura mientras el empleado realiza los ejercicios.</p>
+                            </div>
+                        </div>
+                        <div class="app-feature">
+                            <div class="app-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                    <path d="M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Programas Preventivos y de Seguimiento</h4>
+                                <p>Planes adaptados tanto para personas sin dolor (prevención) como para quienes tienen molestias.</p>
+                            </div>
+                        </div>
+                        <div class="app-feature">
+                            <div class="app-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Comunicación Directa</h4>
+                                <p>Chat con fisioterapeuta y videoconsultas para trabajadores en cualquier puerto o isla.</p>
+                            </div>
+                        </div>
+                        <div class="app-feature">
+                            <div class="app-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 20V10"/>
+                                    <path d="M18 20V4"/>
+                                    <path d="M6 20v-4"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Métricas de Impacto</h4>
+                                <p>Dashboard con datos de adherencia, progreso y satisfacción para justificar la inversión.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-visual">
+                    <img src="app-mockup.png" alt="App Fisify - Puertos de Tenerife" class="app-mockup-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modelo Section -->
+    <section id="modelo" class="model">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Modelo de Servicio</span>
+                <h2 class="section-title">Propuesta Adaptable</h2>
+                <p class="section-subtitle">Un modelo flexible diseñado para encajar en los requisitos de empresa pública, con enfoque 100% preventivo</p>
+            </div>
+            <div class="model-grid">
+                <div class="model-card">
+                    <div class="model-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                            <circle cx="8.5" cy="7" r="4"/>
+                            <line x1="20" y1="8" x2="20" y2="14"/>
+                            <line x1="23" y1="11" x2="17" y2="11"/>
+                        </svg>
+                    </div>
+                    <h3>Valoración Funcional Inicial</h3>
+                    <p>Evaluación presencial voluntaria para identificar necesidades específicas de cada participante.</p>
+                </div>
+                <div class="model-card">
+                    <div class="model-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3>Seguimiento Online</h3>
+                    <p>App personalizada + llamadas semanales + chat con fisioterapeuta para todos los participantes.</p>
+                </div>
+                <div class="model-card">
+                    <div class="model-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <h3>Talleres Periódicos</h3>
+                    <p>Sesiones grupales presenciales regulares combinadas con acceso continuo a la plataforma digital.</p>
+                </div>
+                <div class="model-card">
+                    <div class="model-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <h3>Sistema de Plazas Limitadas</h3>
+                    <p>Se priorizan los trabajadores que más lo necesitan según edad, dolencias previas o tipo de trabajo para optimizar recursos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="precios" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Inversión</span>
+                <h2 class="section-title">Orientación de Precios</h2>
+                <p class="section-subtitle">Opciones flexibles adaptadas a presupuestos públicos y contratos menores</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Fisioterapia Presencial</h3>
+                    <div class="price">35€ <span>/ media hora</span></div>
+                    <p>Sesiones individuales de valoración, chequeo y asesoramiento personalizado.</p>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Valoración funcional completa
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Recomendaciones personalizadas
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Informe individual
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            En sede central (Santa Cruz)
+                        </li>
+                    </ul>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Programa Online Completo</h3>
+                    <div class="price">50€ <span>/ empleado / mes</span></div>
+                    <p>Solución integral con seguimiento continuo y tecnología IA.</p>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Videoconsulta inicial
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Plan personalizado con IA
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Seguimiento semanal
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Chat directo con fisio
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            App con corrección en tiempo real
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Métricas de impacto
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pricing-note">
+                <p><strong>Paquetes cerrados disponibles:</strong> 20, 30 o más plazas para ajustarse a presupuesto público. Compatible con <strong>contrato menor (≤5.000€ o ≤15.000€)</strong> según configuración elegida.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Resultados</span>
+                <h2 class="section-title">Impacto Medible</h2>
+                <p class="section-subtitle">Indicadores clave para justificar la inversión y demostrar resultados</p>
+            </div>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h4>Reducción de Bajas</h4>
+                    <p>Menos absentismo por dolencias musculoesqueléticas</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 20V10"/>
+                            <path d="M18 20V4"/>
+                            <path d="M6 20v-4"/>
+                        </svg>
+                    </div>
+                    <h4>Mejora de Hábitos</h4>
+                    <p>Cambios duraderos en postura y actividad física</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <line x1="9" y1="9" x2="9.01" y2="9"/>
+                            <line x1="15" y1="9" x2="15.01" y2="9"/>
+                        </svg>
+                    </div>
+                    <h4>Satisfacción del Empleado</h4>
+                    <p>Mayor bienestar percibido y engagement</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h4>Cultura Preventiva</h4>
+                    <p>Cambio organizacional a largo plazo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+        <div class="cta-content">
+            <h2>¿Construimos juntos una cultura preventiva?</h2>
+            <p>Nuestro equipo está listo para diseñar un programa a medida que se adapte a las necesidades específicas de Puertos de Tenerife.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <div class="contact-text">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value"><a href="mailto:i.markinez@fisify.com">i.markinez@fisify.com</a></div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-text">
+                        <div class="contact-label">Teléfono</div>
+                        <div class="contact-value"><a href="tel:+34635743006">635 743 006</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Organización Saludable Certificada
+            </div>
+            <p class="footer-text">© 2025 Propuesta de colaboración Fisify × Puertos de Tenerife</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(10, 37, 64, 0.08)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.context-card, .pillar-card, .app-feature, .model-card, .pricing-card, .impact-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
